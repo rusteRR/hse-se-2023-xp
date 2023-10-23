@@ -13,3 +13,9 @@ class Repository:
 
     def get_result_by_id(self, id):
         return db.results[id]
+    
+    def are_correct_credentials(self, login, password):
+        for user in db.users:
+            if user.login == login and user.password == password:
+                return True
+        return False
