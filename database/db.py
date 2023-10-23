@@ -1,4 +1,3 @@
-
 class User:
     def __init__(self, id, fname, sname, login, password, role) -> None:
         self.id       = id
@@ -14,5 +13,6 @@ class Homework:
         self.hw_id     = hw_id
         self.hw_result = hw_result
 
+id = 0
 users   = {}
 results = {}
