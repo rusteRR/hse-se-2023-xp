@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Веб-приложение для сбора и проверки домашних заданий</title>
+</head>
+<body>
+    <h1>Название домашнего задания</h1>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <label for="solution">Приложите файл с решением:</label><br>
+        <input type="file" id="solution" name="solution"><br><br>
+        <input type="submit" value="Отправить">
+    </form>
+</body>
+</html>
