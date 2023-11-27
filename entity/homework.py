@@ -1,12 +1,11 @@
+from datetime import datetime
+
 class Homework:
-    def __init__(self, user_id: int, hw_id: int, hw_result: float, comment: str):
+    def __init__(self, user_id: int, hw_id: int, deadline: datetime):
         self.user_id   = user_id
         self.hw_id     = hw_id
-        self.hw_result = hw_result
-        self.comment   = comment
+        self.deadline  = deadline
+        self.is_done   = False 
     
-    def set_result(self, hw_result: int):
-        self.hw_result = hw_result
-
-    def set_comment(self, comment: str):
-        self.comment   = comment
+    def change_status(self):
+        self.is_done ^= True

@@ -1,3 +1,4 @@
+from entity.result import Result
 from database.repository import Repository
 
 class HomeworkService:
@@ -8,7 +9,7 @@ class HomeworkService:
             res[result] = res.get(result, []) + [(hw.hw_id, hw.hw_result)]
         return res
     
-    def eval_homework(self, hw_id: int, mark: float, comment: str = ""):
-        hw = Repository.get_hw_by_id(hw_id)
-        hw.set_result(mark)
-        hw.set_comment(comment)
+    def eval_homework(self, hw_id: int, mark: float, comment: str = "", fixes: bool = False):
+        Repository.insert_result(Result(hw_id, mark, comment, fixes))
+        if fixes:
+            Repository.get_hw_by_id(hw_id).change_status()
