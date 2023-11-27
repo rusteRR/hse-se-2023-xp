@@ -1,4 +1,5 @@
 from entity.result import Result
+from models.hw_model import Hw
 from database.repository import Repository
 
 class HomeworkService:
@@ -13,3 +14,6 @@ class HomeworkService:
         Repository.insert_result(Result(hw_id, mark, comment, fixes))
         if fixes:
             Repository.get_hw_by_id(hw_id).change_status()
+    
+    def upload_homework(self, hw_id: int, filename: str):
+        Repository.set_filename_to_hw(hw_id, filename)

@@ -16,6 +16,9 @@ class Repository:
     def get_hw_by_id(self, id: int) -> Homework:
         return hw[id]
     
+    def set_filename_to_hw(self, id: int, filename: str):
+        hw[id].filename = filename
+    
     def are_correct_credentials(self, login: str, password: str):
         for user in users:
             if user.login == login and user.password == password:
