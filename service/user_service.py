@@ -1,11 +1,13 @@
-import database.repository as repository
-import entity.user as user
-import database.db as db
+from database.repository import Repository
+from entity.user import User
+from database.db import users
+from database.db import user_id
+
 
 class UserService:
-    def register_user(self, fname, sname, login, password, role):
-        repository.Repository.insert_user(user.User(db.user_id, fname, sname, login, password, role))
-        db.user_id += 1
+    def register_user(self, fname: str, sname: str, login: str, password: str, role: str):
+        Repository.insert_user(User(user_id, fname, sname, login, password, role))
+        user_id += 1
     
-    def login_user(self, login, password):
-        return repository.Repository.are_correct_credentials()
+    def login_user(self, login: str, password: str):
+        return Repository.are_correct_credentials()

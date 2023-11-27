@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-import service.homework_service as hw_service
-import service.user_service as user_service
+from service.homework_service import HomeworkService
+from service.user_service import UserService
 from models.user_model import User
 from models.eval_model import Eval
 
@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.get("/leaderboard")
 async def get_results():
-    return hw_service.HomeworkService.get_results()
+    return HomeworkService.get_results()
 
 @app.get("/login")
 async def login():
@@ -16,7 +16,7 @@ async def login():
 
 @app.post("/register")
 async def register(user: User):
-    user_service.UserService.register_user(user.fname, user.sname, user.login, user.password, user.role)
+    UserService.register_user(user.fname, user.sname, user.login, user.password, user.role)
 
 @app.post("/upload")
 async def homework():
@@ -28,4 +28,4 @@ async def get_hw(hw: int):
 
 @app.post("/eval/homework")
 async def eval_hw(eval: Eval):
-    return hw_service.HomeworkService.eval_homework(eval.hw_id, eval.mark, eval.comment)
+    return HomeworkService.eval_homework(eval.hw_id, eval.mark, eval.comment)
